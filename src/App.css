@@ -10,7 +10,11 @@ body,
   justify-content: center;
   min-height: 100%;
 }
-
+.img-container {
+  width: 600px;
+  height: 680px;
+  background-image: url(./as.jpg);
+}
 .App .card {
   max-width: 400px;
   width: 100%;
@@ -25,7 +29,7 @@ label.radio {
   font-size: 20px;
 }
 
-label.radio+.radio {
+label.radio + .radio {
   margin-left: 0;
 }
 
