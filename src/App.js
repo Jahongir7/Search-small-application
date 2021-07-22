@@ -1,25 +1,32 @@
-import React, { useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 const App = () => {
-  const imgDiv = useRef();
-  const handleMouseMove = (e) => {
-    const { left, top, width, height } = e.target.getBoundingClientRect();
-    const x = ((e.pageX - left) / width) * 100;
-    const y = ((e.pageY - top) / height) * 100;
-    imgDiv.current.style.backgroundPosition = `${x}% ${y}%`;
-  };
-
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    fetch("https://reqres.in/api/users?delay=2")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("unable to fetch data");
+        }
+        return res.json();
+      })
+      .then((result) => {
+        setLoading(false);
+        return setUsers(result.data);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
+  }, []);
   return (
     <div className="App">
-      <div
-        className="img-container"
-        onMouseMove={handleMouseMove}
-        ref={imgDiv}
-        onMouseLeave={() =>
-          (imgDiv.current.style.backgroundPosition = `center`)
-        }
-      />
+      <h1>Users number</h1>
+      <div>{users.length === 0 ? "" : users.length}</div>
+      <div>{loading && "Loading"}</div>
     </div>
   );
 };

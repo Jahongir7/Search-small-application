@@ -5,10 +5,7 @@ body,
 }
 
 .App {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100%;
+  margin: 20px;
 }
 .img-container {
   width: 600px;
