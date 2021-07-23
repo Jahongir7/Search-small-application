@@ -21,7 +21,8 @@ const App = () => {
       company.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setSearchResults(results);
-  }, [companies, searchTerm]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchTerm]);
 
   return (
     <div className="App">
