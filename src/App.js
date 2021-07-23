@@ -1,32 +1,40 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 const App = () => {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const companies = [
+    "Google",
+    "Facebook",
+    "Amazon",
+    "YouTube",
+    "LinkedIn",
+    "Instagram",
+    "Twitter",
+    "Telegram",
+  ];
+
   useEffect(() => {
-    setLoading(true);
-    fetch("https://reqres.in/api/users?delay=2")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("unable to fetch data");
-        }
-        return res.json();
-      })
-      .then((result) => {
-        setLoading(false);
-        return setUsers(result.data);
-      })
-      .catch((err) => {
-        setLoading(false);
-        console.log(err);
-      });
-  }, []);
+    const results = companies.filter((company) =>
+      company.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(results);
+  }, [searchTerm]);
+
   return (
     <div className="App">
-      <h1>Users number</h1>
-      <div>{users.length === 0 ? "" : users.length}</div>
-      <div>{loading && "Loading"}</div>
+      <input
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      <div className="data">
+        {searchResults.map((company, index) => (
+          <div className="row" key={index}>
+            {company}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

@@ -3,35 +3,28 @@ body,
 #root {
   height: 100%;
 }
-
+* {
+  background: #699dde;
+}
 .App {
-  margin: 20px;
+  padding: 40px 0 0 0;
+  margin: 0 auto;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
-.img-container {
-  width: 600px;
-  height: 680px;
-  background-image: url(./as.jpg);
-  margin: 10px auto;
-  cursor: zoom-in;
+input {
+  padding: 20px;
+  margin: 0 auto;
+  width: 300px;
+  outline: none;
+  background-color: #fff;
 }
-.App .card {
-  max-width: 400px;
-  width: 100%;
-  text-align: center;
-}
-
-label.radio {
-  display: block;
-  text-align: left;
-  padding: 15px;
-  margin-bottom: 5px;
-  font-size: 20px;
-}
-
-label.radio + .radio {
-  margin-left: 0;
-}
-
-label.radio input {
-  margin-right: 10px;
+.App .data .row {
+  width: 300px;
+  padding: 14px;
+  background: #333;
+  color: #fff;
+  margin: 12px 0 0 0;
 }
