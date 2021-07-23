@@ -4,6 +4,7 @@ import "./App.css";
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const companies = [
     "Google",
     "Facebook",
@@ -20,7 +21,7 @@ const App = () => {
       company.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setSearchResults(results);
-  }, [searchTerm]);
+  }, [companies, searchTerm]);
 
   return (
     <div className="App">
