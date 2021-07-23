@@ -4,7 +4,6 @@ import "./App.css";
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const companies = [
     "Google",
     "Facebook",
